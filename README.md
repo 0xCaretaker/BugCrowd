@@ -2,7 +2,7 @@
 Solution to your "Which program should I hack in BugCrowd?".
 
 ```bash
-$ python3 bugcrowd.py --type bounty --participation public --scope 1 --random --help
+$ python3 bugcrowd.py --type bounty --part public --scope 1 --random --help
 usage: bugcrowd.py [-h] [-f] [-l] [-n] [-r] [-t TYPE] [-p PART] [-s SCOPE]
 
 Solution to your "Which program should I hack in BugCrowd?".
