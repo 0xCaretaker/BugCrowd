@@ -2,7 +2,7 @@
 Solution to your "Which program should I hack in BugCrowd?".
 
 ```bash
-$ python3 bugcrowd.py --type bounty --part public --scope 1 --random --help
+$ python3 bugcrowd.py --help
 usage: bugcrowd.py [-h] [-f] [-l] [-n] [-r] [-t TYPE] [-p PART] [-s SCOPE]
 
 Solution to your "Which program should I hack in BugCrowd?".
@@ -17,4 +17,11 @@ options:
   -p PART, --part PART  Filter Programs based on Participation Status (Private/Public).
   -s SCOPE, --scope SCOPE
                         Filter Programs based on Scope rating (1-5).
+```
+
+```bash
+kali@TheCaretaker:~$ python3 bugcrowd.py --type bounty --part public --scope 1 --random
+Name            : Opsgenie
+Program URL     : https://bugcrowd.com/Opsgenie
+Min-Max Rewards : $200-$4000
 ```
