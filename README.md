@@ -19,6 +19,7 @@ options:
                         Filter Programs based on Scope rating (1-5).
 ```
 
+Example: Select a random public bounty program with smallest scope. 
 ```bash
 kali@TheCaretaker:~$ python3 bugcrowd.py --type bounty --part public --scope 1 --random
 Name            : Opsgenie
