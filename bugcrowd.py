@@ -24,7 +24,7 @@ def display_program(args, program):
 						print("Scope Rank", str(program[key]).title(), sep='\t: ')
 				
 				elif key == "program_url":
-					print("Program URL", "https://bugcrowd.com" + str(program[key]).title(), sep='\t: ')
+					print("Program URL", "https://bugcrowd.com" + str(program[key]), sep='\t: ')
 				elif key == "industry_name":
 					print("Industry", str(program[key]).title(), sep='\t: ')
 				
@@ -57,7 +57,7 @@ def filter(args, programs):
 	for program in programs:
 		# --type filter
 		if ((args.type is None) or ((args.type.lower() == "vdp" and program['license_key'] == "vdp_pro") or (args.type.lower() == "bounty" and program['license_key'] == "bug_bounty"))):
-			
+
 			# --part filter
 			if ((args.part is None) or ((args.part.lower() == "private" and program['participation'] == "private") or (args.part.lower() == "public" and program['participation'] == "public"))):
 
