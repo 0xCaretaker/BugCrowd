@@ -12,16 +12,16 @@ def display_program(args, program):
 				if key == "name":
 					print(key.title(), str(program[key]).title(), sep='\t\t: ')
 
-				# filter to not print the field which is given as filter
-				elif key == "license_key":
-					if (args.type is None):			
-						print("Type", str(program[key].replace('_',' ').replace('pro','')).title(), sep='\t\t: ')
-				elif key == "participation":
-					if (args.type is None):
-						print((key.replace('_',' ')).title(), str(program[key]).title(), sep='\t: ')
-				elif key == "scope_rank_url":
-					if (args.type is None):
-						print("Scope Rank", str(program[key]).title(), sep='\t: ')
+				# # filter to not print the field which is given as filter
+				# elif key == "license_key":
+				# 	if (args.type is None):			
+				# 		print("Type", str(program[key].replace('_',' ').replace('pro','')).title(), sep='\t\t: ')
+				# elif key == "participation":
+				# 	if (args.type is None):
+				# 		print((key.replace('_',' ')).title(), str(program[key]).title(), sep='\t: ')
+				# elif key == "scope_rank_url":
+				# 	if (args.type is None):
+				# 		print("Scope Rank", str(program[key]).title(), sep='\t: ')
 				
 				elif key == "program_url":
 					print("Program URL", "https://bugcrowd.com" + str(program[key]), sep='\t: ')
@@ -57,7 +57,11 @@ def filter(args, programs):
 
 				# --scope filter
 				if ((args.scope is None) or (program['scope_rank_url'] == args.scope)):
-					filter_programs.append(program)
+
+					# --latest filter
+					if (( not args.latest) or (('badge_type' in program) and (program['badge_type'] == "recent"))):
+							filter_programs.append(program)
+
 	return filter_programs
 
 def main():
@@ -128,19 +132,6 @@ def main():
 	# print programs after filtering 
 	filter_programs= filter(args, programs)
 
-	# --random ; pick a random Program after filters
-	if args.random:
-		random_program = random.choice(filter_programs)
-		display_program(args, random_program)
-		sys.exit()
-
-	# --latest
-	if args.latest:
-		for program in filter_programs:
-			if ('badge_type' in program) and (program['badge_type'] == "recent"):
-				display_program(args, program)
-		sys.exit()
-
 	count=1
 	for program in filter_programs:
 		# --name
@@ -150,6 +141,11 @@ def main():
 			print(count, end=".\n")
 			display_program(args, program)
 		count+=1
+	
+	# --random ; pick a random Program after filters
+	if args.random:
+		random_program = random.choice(filter_programs)
+		display_program(args, random_program)
 
 if __name__ == "__main__":
     main()
