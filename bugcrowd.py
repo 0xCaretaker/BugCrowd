@@ -136,7 +136,7 @@ def main():
 
 	# --random ; pick a random Program after filters
 	if args.random:
-		random_program = random.choice(programs)
+		random_program = random.choice(filter_programs)
 		display_program(args, random_program)
 		sys.exit()
 
