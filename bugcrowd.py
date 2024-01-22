@@ -45,12 +45,6 @@ def display_program(args, program):
 
 
 def filter(args, programs):
-	# --latest
-	if args.latest:
-		for program in programs:
-			if ('badge_type' in program) and (program['badge_type'] == "recent"):
-				display_program(args, program)
-		sys.exit()
 
 	# implement filters
 	filter_programs = []
@@ -138,6 +132,13 @@ def main():
 	if args.random:
 		random_program = random.choice(filter_programs)
 		display_program(args, random_program)
+		sys.exit()
+
+	# --latest
+	if args.latest:
+		for program in filter_programs:
+			if ('badge_type' in program) and (program['badge_type'] == "recent"):
+				display_program(args, program)
 		sys.exit()
 
 	count=1
